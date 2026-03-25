@@ -12,6 +12,8 @@
              Enemigo.Nombre = "CPU 1";
              Enemigo.Vida = 100;
              Enemigo.Ataque = 5;
+            int men=0;
+            //Poner nombre
              do
              {
                  Console.WriteLine("Inserte el nombre para su personaje");
@@ -19,8 +21,9 @@
              } while (Jugador.Nombre == "");
              Console.Clear();
             //pantalla de niveles 
+            
             //jugador
-            Console.writeline("");
+            Console.WriteLine("");
             //primera acción: selección de movimiento
             do
             {
@@ -30,8 +33,9 @@
                     "1-Atacar",
                     "2-Curar",
                     };
-                O = menu.MakeMenu("Seleccione una accion", Operaciones, 1);
-            } while (O < 1 || O > 2);
+                men = menu.MakeMenu("Seleccione una accion", Operaciones, 1);
+            } while (men < 1 || men > 2);
+            
         }
     }
 }
