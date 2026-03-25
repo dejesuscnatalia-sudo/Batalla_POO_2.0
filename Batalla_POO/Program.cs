@@ -51,7 +51,43 @@
         
             decimal curacionEnemigo = ce * 0.05m; //este hay que ponerlo en un if que dependa de si el enemigo esta con poca vida
             decimal curacionJugador = cj * 0.1m; //este hay que meterlo al ciclo donde se elije la opcion de curacion 
-        
+
+            
+            switch (O)
+            {
+                case 1:
+                    if (aj <= 50)
+                    {
+                        if (aj <= 10)
+                        {
+                            Console.WriteLine("Has realizado un ataque furioso, has hecho el doble de daño");
+                            //ataque furioso hace el doble de daño
+                        }
+                        Console.WriteLine("Tu ataque ha sido exitoso");
+                        Random incremento = new Random();
+                        decimal incrementoAtaque = incremento.Next(1, 101);
+                        decimal incrementoFinal = incrementoAtaque * 0.1m;
+                        Console.WriteLine("Tu ataque se ha incrementado en: " + incrementoFinal);
+                        //aqui incrementas tu ataque
+                    }
+                    else
+                    {
+                        Console.WriteLine("Tu ataque ha fallado");
+                    }
+                    break;
+                case 2:
+                    if (curacionJugador > 0)
+                    {
+                        Console.WriteLine("Te has curado por: " + curacionJugador);
+                        //aqui incrementas tu vida
+                    }
+                    else
+                    {
+                        Console.WriteLine("No pudiste curarte");
+                    }
+                    break;
+            }
+            
             Console.WriteLine("Probabilidad: " + ae);
         
            
@@ -75,25 +111,7 @@
                 Console.WriteLine("El ataque del enemigo ha fallado");
             }
 
-            if (aj <= 50) 
-            {
-                if (aj <= 10)
-                {
-                    Console.WriteLine("Has realizado un ataque furioso, has hecho el doble de daño");
-                    //ataque furioso hace el doble de daño
-                }
-                Console.WriteLine("Tu ataque ha sido exitoso");
-                Random incremento = new Random();
-                decimal incrementoAtaque = incremento.Next(1, 101);
-                decimal incrementoFinal = incrementoAtaque * 0.1m;
-                Console.WriteLine("Tu ataque se ha incrementado en: " + incrementoFinal);
-                //aqui incrementas tu ataque
-            }
-            else
-            {
-                Console.WriteLine("Tu ataque ha fallado");
-            }
-        
+           
             if (curacionEnemigo > 0)
             {
                 Console.WriteLine("El enemigo se ha curado por: " + curacionEnemigo);
@@ -102,16 +120,6 @@
             else 
             { 
                 Console.WriteLine("El enemigo no pudo curarse");
-            }
-        
-            if (curacionJugador > 0)
-            {
-                Console.WriteLine("Te has curado por: " + curacionJugador);
-                //aqui incrementas tu vida
-            }
-            else 
-            {
-                Console.WriteLine("No pudiste curarte");
             }
         
             }
