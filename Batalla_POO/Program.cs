@@ -40,16 +40,14 @@
             Random AtaqueJugador = new Random();
             Random CuracionEnemigo = new Random();
             Random CuracionJugador = new Random();
-            Random AtaqueFurioso = new Random();
-            Random AtaqueOscuro = new Random();
+
         
         
             decimal ae = AtaqueEnemigo.Next(1, 101);
             decimal aj = AtaqueJugador.Next(1, 101);
             decimal ce = CuracionEnemigo.Next(1, 101);
             decimal cj = CuracionJugador.Next(1, 101);
-            decimal af = AtaqueFurioso.Next(1, 101);
-            decimal ao = AtaqueOscuro.Next(1, 101);
+         
         
             decimal curacionEnemigo = ce * 0.05m; //este hay que meterlo al ciclo donde se elije la opcion de curacion
             decimal curacionJugador = cj * 0.1m; //este hay que ponerlo en un if que dependa de si el enemigo esta con poca vida
