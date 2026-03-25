@@ -32,7 +32,7 @@
                      "2-Curar",
                  };
                  Menu menu = new Menu();
-                 Estadisticas = menu.MakeMenu($"Jugador: Vida={Jugador.Vida} | Ataque={Jugador.Ataque}\nEnemigo: Vida={Enemigo.Vida} | Ataque={Enemigo.Ataque}\nSeleccione una accion", Movimientos, 1);
+                 Estadisticas = menu.MakeMenu($"{Jugador.Nombre}: Vida={Jugador.Vida} | Ataque={Jugador.Ataque}\n{Enemigo.Nombre}: Vida={Enemigo.Vida} | Ataque={Enemigo.Ataque}\nSeleccione una accion", Movimientos, 1);
              } while (O < 1 || O > 2);
             
 
