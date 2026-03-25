@@ -16,6 +16,7 @@ namespace Batalla_POO
             Random AtaqueJugador = new Random();
             Random CuracionEnemigo = new Random();
             Random CuracionJugador = new Random();
+            Random TurnoEnemigo = new Random ();
 
 
 
@@ -23,6 +24,7 @@ namespace Batalla_POO
             decimal aj = AtaqueJugador.Next(1, 101);
             decimal ce = CuracionEnemigo.Next(1, 101);
             decimal cj = CuracionJugador.Next(1, 101);
+            int te = TurnoEnemigo.Next(1, 101);
 
 
             decimal curacionEnemigo = ce * 0.05m; //este hay que ponerlo en un if que dependa de si el enemigo esta con poca vida
