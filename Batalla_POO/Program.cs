@@ -56,27 +56,34 @@
         
             Console.WriteLine("Probabilidad: " + ae);
         
+           
             if (ae <= 50)
             {
-        
-            Console.WriteLine("El ataque del enemigo ha sido exitoso");
-            Random incremento = new Random();
-            decimal incrementoAtaque = incremento.Next(1, 101);
-            decimal incrementoFinal = incrementoAtaque * 0.05m;
-            Console.WriteLine("El ataque del enemigo se ha incrementado en: " + incrementoFinal);
-            //aqui incrementas el ataque del enemigo
-                
-        
-            
+                if (ae <= 5)
+                {
+                    Console.WriteLine("El enemigo ha realizado un ataque oscuro, has recibido el triple del daño");
+                    //ataque oscuro del enemigo hace el triple de daño
+                }
+                Console.WriteLine("El ataque del enemigo ha sido exitoso");
+                Random incremento = new Random();
+                decimal incrementoAtaque = incremento.Next(1, 101);
+                decimal incrementoFinal = incrementoAtaque * 0.05m;
+                Console.WriteLine("El ataque del enemigo se ha incrementado en: " + incrementoFinal);
+                //aqui incrementas el ataque del enemigo
             }
-        
+
             else
-            { 
+            {
                 Console.WriteLine("El ataque del enemigo ha fallado");
             }
-        
+
             if (aj <= 50) 
+            {
+                if (aj <= 10)
                 {
+                    Console.WriteLine("Has realizado un ataque furioso, has hecho el doble de daño");
+                    //ataque furioso hace el doble de daño
+                }
                 Console.WriteLine("Tu ataque ha sido exitoso");
                 Random incremento = new Random();
                 decimal incrementoAtaque = incremento.Next(1, 101);
