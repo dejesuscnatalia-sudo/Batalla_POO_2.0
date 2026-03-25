@@ -1,8 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Batalla_POO
+{
     internal class Personaje
     {
         private string nombre;
@@ -18,8 +21,8 @@ namespace Batalla_POO
                 {
                     throw new Exception("El nombre no puede estar vacio.");
 
-                } 
-                else 
+                }
+                else
                 {
                     nombre = value;
 
@@ -31,12 +34,12 @@ namespace Batalla_POO
             get { return vida; }
             set
             {
-                if (value < 0) 
+                if (value < 0)
                 {
                     throw new Exception("La vida no puede ser negativa");
 
                 }
-                else 
+                else
                 {
                     vida = value;
 
@@ -48,12 +51,12 @@ namespace Batalla_POO
             get { return ataque; }
             set
             {
-                if (value <= 0) 
+                if (value <= 0)
                 {
                     throw new Exception("El ataque debe ser mayor que cero");
 
                 }
-                else 
+                else
                 {
                     ataque = value;
 
@@ -71,12 +74,12 @@ namespace Batalla_POO
 
                 enemigo.Vida -= Ataque;
 
-               // Console.WriteLine(Nombre + " atacó a " + enemigo.Nombre);
+                // Console.WriteLine(Nombre + " atacó a " + enemigo.Nombre);
                 //Console.WriteLine("Daño causado: " + Ataque);
             }
             catch (Exception error)
             {
-                trow new Exception ("Error al atacar: " + error.Message);
+                throw new Exception("Error al atacar: " + error.Message);
             }
         }
         public void Curar(int cantidad)
@@ -95,7 +98,7 @@ namespace Batalla_POO
                     Vida = 100;
                 }
 
-               // Console.WriteLine(Nombre + " se curó " + cantidad + " puntos.");
+                // Console.WriteLine(Nombre + " se curó " + cantidad + " puntos.");
             }
             catch
             {
@@ -114,11 +117,11 @@ namespace Batalla_POO
 
                 Ataque += cantidad;
 
-              //  Console.WriteLine(Nombre + " aumentó su ataque en " + cantidad);
+                //  Console.WriteLine(Nombre + " aumentó su ataque en " + cantidad);
             }
             catch
             {
-                throw new  Exception ("Error al aumentar ataque." );
+                throw new Exception("Error al aumentar ataque.");
             }
         }
     }
