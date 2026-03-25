@@ -118,7 +118,7 @@ namespace Batalla_POO
             }
             catch
             {
-                throw new  Exception ("Error al aumentar ataque" );
+                throw new  Exception ("Error al aumentar ataque." );
             }
         }
     }
