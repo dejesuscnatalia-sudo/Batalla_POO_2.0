@@ -6,11 +6,11 @@
         {
              int Estadisticas, O;
              O = 0;
-             Game Jugador = new Game();
+             Personaje Jugador = new Personaje();
              Jugador.Nombre = null;
              Jugador.Vida = 100;
              Jugador.Ataque = 5;
-             Game Enemigo = new Game();
+             Personaje Enemigo = new Game();
              Enemigo.Nombre = "CPU 1";
              Enemigo.Vida = 100; 
              Enemigo.Ataque = 5;
@@ -19,7 +19,7 @@
                  Console.WriteLine("Inserte el nombre para su personaje");
                  Jugador.Nombre = Console.ReadLine();
              } while (Jugador.Nombre == "");
-             Game Datos = new Game();
+             Personaje Datos = new Personaje();
              Console.Clear();
              //jugador
              Console.WriteLine("");
