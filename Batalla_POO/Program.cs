@@ -21,7 +21,6 @@
              } while (Jugador.Nombre == "");
              Game Datos = new Game();
              Console.Clear();
-             //pantalla de niveles 
              //jugador
              Console.WriteLine("");
              //primera acción: selección de movimiento
