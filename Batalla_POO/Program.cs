@@ -49,8 +49,8 @@
             decimal cj = CuracionJugador.Next(1, 101);
          
         
-            decimal curacionEnemigo = ce * 0.05m; //este hay que meterlo al ciclo donde se elije la opcion de curacion
-            decimal curacionJugador = cj * 0.1m; //este hay que ponerlo en un if que dependa de si el enemigo esta con poca vida
+            decimal curacionEnemigo = ce * 0.05m; //este hay que ponerlo en un if que dependa de si el enemigo esta con poca vida
+            decimal curacionJugador = cj * 0.1m; //este hay que meterlo al ciclo donde se elije la opcion de curacion 
         
             Console.WriteLine("Probabilidad: " + ae);
         
