@@ -105,6 +105,60 @@ namespace Batalla_POO
          throw new Exception("Error al curar.");
      }
  }
+         public void AtaqueFurioso(Personajes enemigo)
+ {
+     try
+     {
+         if (enemigo == null)
+         {
+             throw new Exception("No hay enemigo para atacar.");
+         }
+         Random random = new Random();
+         int probabilidad = random.Next(1, 101);
+         if (probabilidad <= 10)
+         {
+             decimal daño = Ataque * 2;
+             enemigo.Vida -= daño;
+             // Console.WriteLine(Nombre + " usó Ataque Furioso en " + enemigo.Nombre);
+             // Console.WriteLine("Daño causado: " + daño);
+         }
+         else
+         {
+             // Console.WriteLine(Nombre + " intentó usar Ataque Furioso pero falló.");
+         }
+     }
+     catch (Exception error)
+     {
+         throw new Exception("Error al usar Ataque Furioso: " + error.Message);
+     }
+ }
+ public void AtaqueOscuro (Personajes enemigo)
+ {
+     try
+     {
+         if (enemigo == null)
+         {
+             throw new Exception("No hay enemigo para atacar.");
+         }
+         Random random = new Random();
+         int probabilidad = random.Next(1, 101);
+         if (probabilidad <= 5)
+         {
+             decimal daño = Ataque * 3;
+             enemigo.Vida -= daño;
+             // Console.WriteLine(Nombre + " usó Ataque Oscuro en " + enemigo.Nombre);
+             // Console.WriteLine("Daño causado: " + daño);
+         }
+         else
+         {
+             // Console.WriteLine(Nombre + " intentó usar Ataque Oscuro pero falló.");
+         }
+     }
+     catch (Exception error)
+     {
+         throw new Exception("Error al usar Ataque Oscuro: " + error.Message);
+     }
+ }
 
         private void AumentarAtaque(int cantidad)
         {
