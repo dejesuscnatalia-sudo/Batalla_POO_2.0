@@ -51,76 +51,85 @@ namespace Batalla_POO
             decimal curacionJugador = cj * 0.1m; //este hay que meterlo al ciclo donde se elije la opcion de curacion 
 
 
-            switch (Estadisticas)
+            switch (O)
             {
                 case 1:
-                    if (aj <= 50)
-                    {
-                        if (aj <= 10)
+                    if (aj <= 50) 
                         {
-                            Console.WriteLine("Has realizado un ataque furioso, has hecho el doble de daño");
-                            //ataque furioso hace el doble de daño
+                            if (aj <= 10)
+                                    {
+                                        Jugador.Ataque *= 2;
+                                        Enemigo.Vida -= Jugador.Ataque; 
+                                        Console.WriteLine("Has realizado un ataque furioso, has hecho el doble de daño");
+                                        //ataque furioso hace el doble de daño, si es golpe critico hace el 25% mas de daño, osea 2.25 veces el daño normal
+                                    }        
+                                Enemigo.Vida -= Jugador.Ataque;
+                                Console.WriteLine("Tu ataque ha sido exitoso");
+                                Random incremento = new Random();
+                                decimal incrementoAtaque = incremento.Next(1, 101);
+                                decimal incrementoFinal = incrementoAtaque * 0.1m;
+                                Jugador.Ataque += incrementoFinal;
+                                Console.WriteLine("Tu ataque se ha incrementado en: " + incrementoFinal);
+                                //aqui incrementas tu ataque
                         }
-                        Console.WriteLine("Tu ataque ha sido exitoso");
-                        Random incremento = new Random();
-                        decimal incrementoAtaque = incremento.Next(1, 101);
-                        decimal incrementoFinal = incrementoAtaque * 0.1m;
-                        Console.WriteLine("Tu ataque se ha incrementado en: " + incrementoFinal);
-                        //aqui incrementas tu ataque
-                    }
-                    else
-                    {
-                        Console.WriteLine("Tu ataque ha fallado");
-                    }
                     break;
                 case 2:
                     if (curacionJugador > 0)
-                    {
-                        Console.WriteLine("Te has curado por: " + curacionJugador);
-                        //aqui incrementas tu vida
-                    }
+                        {
+                            Jugador.Vida += curacionJugador;
+                            Console.WriteLine("Te has curado por: " + curacionJugador);
+                            //aqui incrementas tu vida
+                        }
                     else
-                    {
-                        Console.WriteLine("No pudiste curarte");
-                    }
+                        {
+                            Console.WriteLine("No pudiste curarte");
+                        }
                     break;
             }
-            switch (Estadisticas)
-            {
-                case 1:
-                    if (ae <= 50)
-                    {
+            
+            Console.WriteLine("Probabilidad: " + ae);
+        
+           
+                if (ae <= 50)
+                    {                    
                         if (ae <= 5)
-                        {
-                            Console.WriteLine("El enemigo ha realizado un ataque oscuro, has recibido el triple del daño");
-                            //ataque oscuro del enemigo hace el triple de daño
-                        }
+                               {
+
+                                    Enemigo.Ataque *= 3;
+                                    Jugador.Vida -= Enemigo.Ataque;
+                                    Console.WriteLine("El enemigo ha realizado un ataque oscuro, has recibido el triple del daño");
+                                    //ataque oscuro del enemigo hace el triple de daño, si es golpe critico hace el 25% mas de daño, osea 3.25 veces el daño normal
+
+                               }
+                        Jugador.Vida -= Enemigo.Ataque;
                         Console.WriteLine("El ataque del enemigo ha sido exitoso");
                         Random incremento = new Random();
                         decimal incrementoAtaque = incremento.Next(1, 101);
                         decimal incrementoFinal = incrementoAtaque * 0.05m;
+                        Enemigo.Ataque += incrementoFinal;
                         Console.WriteLine("El ataque del enemigo se ha incrementado en: " + incrementoFinal);
                         //aqui incrementas el ataque del enemigo
+    
                     }
-                    else
+
+                else
                     {
                         Console.WriteLine("El ataque del enemigo ha fallado");
                     }
-                    break;
-                case 2:
 
-
-                    if (curacionEnemigo > 0)
+           
+               if (curacionEnemigo > 0)
                     {
+                        Enemigo.Vida += curacionEnemigo;
                         Console.WriteLine("El enemigo se ha curado por: " + curacionEnemigo);
                         //aqui incrementas la vida del enemigo
                     }
-                    else
+                else
                     {
                         Console.WriteLine("El enemigo no pudo curarse");
                     }
-                    break;
+                       
+                }
+        
             }
         }
-    }
-}
