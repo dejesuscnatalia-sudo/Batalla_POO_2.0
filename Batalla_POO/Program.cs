@@ -54,7 +54,7 @@ decimal curacionJugador = cj * 0.1m; //este hay que ponerlo en un if que dependa
 
 Console.WriteLine("Probabilidad: " + ae);
 
-if (ae <= 50)
+if (ae ==0%2)
 {
 
     Console.WriteLine("El ataque del enemigo ha fallado");
@@ -72,7 +72,7 @@ else
     //aqui incrementas el ataque del enemigo
 }
 
-if (aj <= 50) {
+if (aj == 0%2) {
     Console.WriteLine("Tu ataque ha sido exitoso");
     Random incremento = new Random();
     decimal incrementoAtaque = incremento.Next(1, 101);
@@ -99,7 +99,7 @@ if (curacionJugador > 0)
 
 
 
-if (af <= 10)
+if (af == 0%10)
 {
     Console.WriteLine("Tu ataque furioso ha sido exitoso, has hecho el doble de daño");
     //aqui haces el doble de daño
@@ -109,7 +109,7 @@ else
     Console.WriteLine("Tu ataque furioso ha fallado");
 }
 
-if (ao <= 5)
+if (ao == 0%20)
 {
     Console.WriteLine("El ataque oscuro del enemigo ha sido exitoso, ha hecho el triple de daño");
     //aqui el enemigo hace el triple de daño
