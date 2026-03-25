@@ -97,7 +97,7 @@ if (curacionJugador > 0)
     //aqui incrementas tu vida
 }
 
-// if (!curacionEnemigo.Equals(curacionJugador)) = compara los valores de ambas curaciones, si son diferentes hace algo
+
 
 if (af <= 10)
 {
