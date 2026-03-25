@@ -12,28 +12,6 @@ namespace Batalla_POO
             Enemigo.Nombre = "CPU 1";
             Enemigo.Vida = 100;
             Enemigo.Ataque = 5;
-            do
-            {
-                Console.WriteLine("Inserte el nombre para su personaje");
-                Jugador.Nombre = Console.ReadLine();
-            } while (Jugador.Nombre == "");
-            Personaje Datos = new Personaje();
-            Console.Clear();
-            //jugador
-            Console.WriteLine("");
-            //primera acción: selección de movimiento
-            do
-            {
-                string[] Movimientos = new string[]
-                {
-                     "1-Atacar",
-                     "2-Curar",
-                };
-                Menu menu = new Menu();
-                Estadisticas = menu.MakeMenu($"{Jugador.Nombre}: Vida={Jugador.Vida} | Ataque={Jugador.Ataque}\n{Enemigo.Nombre}: Vida={Enemigo.Vida} | Ataque={Enemigo.Ataque}\nSeleccione una accion", Movimientos, 1);
-            } while (Estadisticas < 1 || Estadisticas > 2);
-
-
             Random AtaqueEnemigo = new Random(); //contexto: da un numero al azar
             Random AtaqueJugador = new Random();
             Random CuracionEnemigo = new Random();
@@ -49,6 +27,28 @@ namespace Batalla_POO
 
             decimal curacionEnemigo = ce * 0.05m; //este hay que ponerlo en un if que dependa de si el enemigo esta con poca vida
             decimal curacionJugador = cj * 0.1m; //este hay que meterlo al ciclo donde se elije la opcion de curacion 
+         do{   
+            do
+            {
+                Console.WriteLine("Inserte el nombre para su personaje");
+                Jugador.Nombre = Console.ReadLine();
+            } while (Jugador.Nombre == "");
+            Personaje Datos = new Personaje();
+            Console.Clear();
+            Console.WriteLine("");
+        //primera acción: selección de movimiento
+           
+            do
+            {
+                string[] Movimientos = new string[]
+                {
+                     "1-Atacar",
+                     "2-Curar",
+                };
+                Menu menu = new Menu();
+                Estadisticas = menu.MakeMenu($"{Jugador.Nombre}: Vida={Jugador.Vida} | Ataque={Jugador.Ataque}\n{Enemigo.Nombre}: Vida={Enemigo.Vida} | Ataque={Enemigo.Ataque}\nSeleccione una accion", Movimientos, 1);
+            } while (Estadisticas < 1 || Estadisticas > 2);
+
 
 
             switch (Estadisticas)
@@ -130,6 +130,6 @@ namespace Batalla_POO
                     }
                        
                 }
-        
+            }while (Jugador.Vida >= 0 || Enemigo.Vida >= 0);
             }
         }
