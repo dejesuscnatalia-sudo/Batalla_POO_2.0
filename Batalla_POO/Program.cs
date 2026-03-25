@@ -60,19 +60,20 @@
             if (ae <= 50)
             {
         
-            Console.WriteLine("El ataque del enemigo ha fallado");
-        
-            
-            }
-        
-            else
-            { 
             Console.WriteLine("El ataque del enemigo ha sido exitoso");
             Random incremento = new Random();
             decimal incrementoAtaque = incremento.Next(1, 101);
             decimal incrementoFinal = incrementoAtaque * 0.05m;
             Console.WriteLine("El ataque del enemigo se ha incrementado en: " + incrementoFinal);
             //aqui incrementas el ataque del enemigo
+                
+        
+            
+            }
+        
+            else
+            { 
+                Console.WriteLine("El ataque del enemigo ha fallado");
             }
         
             if (aj <= 50) 
