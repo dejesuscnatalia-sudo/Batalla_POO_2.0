@@ -116,26 +116,6 @@
                 Console.WriteLine("No pudiste curarte");
             }
         
-        
-        
-            if (af <= 10)
-            {
-                Console.WriteLine("Tu ataque furioso ha sido exitoso, has hecho el doble de daño");
-                //aqui haces el doble de daño
-            }
-            else
-            {
-                Console.WriteLine("Tu ataque furioso ha fallado");
-            }
-        
-            if (ao <= 5)
-            {    
-                Console.WriteLine("El ataque oscuro del enemigo ha sido exitoso, ha hecho el triple de daño");
-                //aqui el enemigo hace el triple de daño
-            }
-            else
-            {
-                Console.WriteLine("El ataque oscuro del enemigo ha fallado");
             }
         }
     }
