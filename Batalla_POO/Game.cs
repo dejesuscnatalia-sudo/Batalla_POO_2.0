@@ -63,48 +63,48 @@ namespace Batalla_POO
                 }
             }
         }
-        public void Atacar(Personaje enemigo)
-        {
-            try
-            {
-                if (enemigo == null)
-                {
-                    throw new Exception("No hay enemigo para atacar.");
-                }
+         public decimal Atacar(Personaje enemigo)
+ {
+     try
+     {
+         if (enemigo == null)
+         {
+             throw new Exception("No hay enemigo para atacar.");
+         }
 
-                enemigo.Vida -= Ataque;
+          return enemigo.Vida -= Ataque;
 
-                // Console.WriteLine(Nombre + " atacó a " + enemigo.Nombre);
-                //Console.WriteLine("Daño causado: " + Ataque);
-            }
-            catch (Exception error)
-            {
-                throw new Exception("Error al atacar: " + error.Message);
-            }
-        }
-        public void Curar(int cantidad)
-        {
-            try
-            {
-                if (cantidad <= 0)
-                {
-                    throw new Exception("La cantidad de curación debe ser positiva.");
-                }
+         // Console.WriteLine(Nombre + " atacó a " + enemigo.Nombre);
+         //Console.WriteLine("Daño causado: " + Ataque);
+     }
+     catch (Exception error)
+     {
+         throw new Exception("Error al atacar: " + error.Message);
+     }
+ }
+ public decimal Curar(int cantidad)
+ {
+     try
+     {
+         if (cantidad <= 0)
+         {
+             throw new Exception("La cantidad de curación debe ser positiva.");
+         }
 
-                Vida += cantidad;
+         return Vida += cantidad;
 
-                if (Vida > 100)
-                {
-                    Vida = 100;
-                }
+         if (Vida > 100)
+         {
+             Vida = 100;
+         }
 
-                // Console.WriteLine(Nombre + " se curó " + cantidad + " puntos.");
-            }
-            catch
-            {
-                throw new Exception("Error al curar.");
-            }
-        }
+         // Console.WriteLine(Nombre + " se curó " + cantidad + " puntos.");
+     }
+     catch
+     {
+         throw new Exception("Error al curar.");
+     }
+ }
 
         private void AumentarAtaque(int cantidad)
         {
