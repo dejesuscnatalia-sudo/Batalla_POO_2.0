@@ -95,11 +95,19 @@
                 Console.WriteLine("El enemigo se ha curado por: " + curacionEnemigo);
                 //aqui incrementas la vida del enemigo
             }
+            else 
+            { 
+                Console.WriteLine("El enemigo no pudo curarse");
+            }
         
             if (curacionJugador > 0)
             {
                 Console.WriteLine("Te has curado por: " + curacionJugador);
                 //aqui incrementas tu vida
+            }
+            else 
+            {
+                Console.WriteLine("No pudiste curarte");
             }
         
         
