@@ -33,6 +33,93 @@
                     };
                 O = menu.MakeMenu("Seleccione una accion", Operaciones, 1);
             } while (O < 1 || O > 2);
+
+            Random AtaqueEnemigo = new Random(); //contexto: da un numero al azar
+Random AtaqueJugador = new Random();
+Random CuracionEnemigo = new Random();
+Random CuracionJugador = new Random();
+Random AtaqueFurioso = new Random();
+Random AtaqueOscuro = new Random();
+Random CriticoJugador = new Random();
+Random CriticoEnemigo = new Random();
+
+
+decimal ae = AtaqueEnemigo.Next(1, 101);
+decimal aj = AtaqueJugador.Next(1, 101);
+decimal ce = CuracionEnemigo.Next(1, 101);
+decimal cj = CuracionJugador.Next(1, 101);
+decimal af = AtaqueFurioso.Next(1, 101);
+decimal ao = AtaqueOscuro.Next(1, 101);
+
+decimal curacionEnemigo = ce * 0.05m;
+decimal curacionJugador = cj * 0.1m;
+
+Console.WriteLine("Probabilidad: " + ae);
+
+if (ae <= 50)
+{
+
+    Console.WriteLine("El ataque del enemigo ha fallado");
+
+    
+}
+
+else
+{ 
+    Console.WriteLine("El ataque del enemigo ha sido exitoso");
+    Random incremento = new Random();
+    decimal incrementoAtaque = incremento.Next(1, 101);
+    decimal incrementoFinal = incrementoAtaque * 0.05m;
+    Console.WriteLine("El ataque del enemigo se ha incrementado en: " + incrementoFinal);
+    //aqui incrementas el ataque del enemigo
+}
+
+if (aj <= 50) {
+    Console.WriteLine("Tu ataque ha sido exitoso");
+    Random incremento = new Random();
+    decimal incrementoAtaque = incremento.Next(1, 101);
+    decimal incrementoFinal = incrementoAtaque * 0.1m;
+    Console.WriteLine("Tu ataque se ha incrementado en: " + incrementoFinal);
+    //aqui incrementas tu ataque
+}
+else
+{
+    Console.WriteLine("Tu ataque ha fallado");
+}
+
+if (curacionEnemigo > 0)
+{
+    Console.WriteLine("El enemigo se ha curado por: " + curacionEnemigo);
+    //aqui incrementas la vida del enemigo
+}
+
+if (curacionJugador > 0)
+{
+    Console.WriteLine("Te has curado por: " + curacionJugador);
+    //aqui incrementas tu vida
+}
+
+// if (!curacionEnemigo.Equals(curacionJugador)) = compara los valores de ambas curaciones, si son diferentes hace algo
+
+if (af <= 10)
+{
+    Console.WriteLine("Tu ataque furioso ha sido exitoso, has hecho el doble de daño");
+    //aqui haces el doble de daño
+}
+else
+{
+    Console.WriteLine("Tu ataque furioso ha fallado");
+}
+
+if (ao <= 5)
+{
+    Console.WriteLine("El ataque oscuro del enemigo ha sido exitoso, ha hecho el triple de daño");
+    //aqui el enemigo hace el triple de daño
+}
+else
+{
+    Console.WriteLine("El ataque oscuro del enemigo ha fallado");
+}
         }
     }
 }
