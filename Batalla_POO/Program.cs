@@ -86,41 +86,88 @@ namespace Batalla_POO
                         }
                     break;
             }
+             
+                if (Enemigo.Vida <= 100)
+{
+    if (te <= 25)
+    {
+
+        if (curacionEnemigo > 0)
+        {
+            Enemigo.Curar((int)curacionEnemigo);
+            Console.WriteLine("El enemigo se ha curado por: " + curacionEnemigo);
+            //aqui incrementas la vida del enemigo
             
-            Console.WriteLine("Probabilidad: " + ae);
-        
-           
+        }
+        else
+        {
+            Console.WriteLine("El enemigo no pudo curarse");
+        }
+
+
+    } 
+        else 
+            {
+        if (ae <= 50)
+        {
+            if (ae <= 5)
+            {
+
+                Enemigo.AtaqueOscuro(Jugador);
+                Console.WriteLine("El enemigo ha realizado un ataque oscuro, has recibido el triple del daño");
+                //ataque oscuro del enemigo hace el triple de daño, si es golpe critico hace el 25% mas de daño, osea 3.25 veces el daño normal
+
+            }
+            Enemigo.Atacar(Jugador);
+            Console.WriteLine("El ataque del enemigo ha sido exitoso");
+            Random incremento = new Random();
+            decimal incrementoAtaque = incremento.Next(1, 101);
+            decimal incrementoFinal = incrementoAtaque * 0.05m;
+            Enemigo.Ataque += incrementoFinal;
+            Console.WriteLine("El ataque del enemigo se ha incrementado en: " + incrementoFinal);
+            //aqui incrementas el ataque del enemigo
+
+        }
+        else
+        {
+            Console.WriteLine("El ataque del enemigo ha fallado");
+        }
+
+    if (Enemigo.Vida <= 50)
+    {
+        if (te <= 25)
+            {
                 if (ae <= 50)
-                    {                    
-                        if (ae <= 5)
-                               {
+                {
+                    if (ae <= 5)
+                    {
 
-                                    Enemigo.Ataque *= 3;
-                                    Jugador.Vida -= Enemigo.Ataque;
-                                    Console.WriteLine("El enemigo ha realizado un ataque oscuro, has recibido el triple del daño");
-                                    //ataque oscuro del enemigo hace el triple de daño, si es golpe critico hace el 25% mas de daño, osea 3.25 veces el daño normal
+                        Enemigo.AtaqueOscuro(Jugador);
+                        Console.WriteLine("El enemigo ha realizado un ataque oscuro, has recibido el triple del daño");
+                        //ataque oscuro del enemigo hace el triple de daño, si es golpe critico hace el 25% mas de daño, osea 3.25 veces el daño normal
 
-                               }
-                        Jugador.Vida -= Enemigo.Ataque;
-                        Console.WriteLine("El ataque del enemigo ha sido exitoso");
-                        Random incremento = new Random();
-                        decimal incrementoAtaque = incremento.Next(1, 101);
-                        decimal incrementoFinal = incrementoAtaque * 0.05m;
-                        Enemigo.Ataque += incrementoFinal;
-                        Console.WriteLine("El ataque del enemigo se ha incrementado en: " + incrementoFinal);
-                        //aqui incrementas el ataque del enemigo
-    
                     }
+                    Enemigo.Atacar(Jugador);
+                    Console.WriteLine("El ataque del enemigo ha sido exitoso");
+                    Random incremento = new Random();
+                    decimal incrementoAtaque = incremento.Next(1, 101);
+                    decimal incrementoFinal = incrementoAtaque * 0.05m;
+                    Enemigo.Ataque += incrementoFinal;
+                    Console.WriteLine("El ataque del enemigo se ha incrementado en: " + incrementoFinal);
+                    //aqui incrementas el ataque del enemigo
+
+                }
 
                 else
+                {
+                    Console.WriteLine("El ataque del enemigo ha fallado");
+                }
+            }
+        else
+            {
+                if (curacionEnemigo > 0)
                     {
-                        Console.WriteLine("El ataque del enemigo ha fallado");
-                    }
-
-           
-               if (curacionEnemigo > 0)
-                    {
-                        Enemigo.Vida += curacionEnemigo;
+                        Enemigo.Curar((int)curacionEnemigo);
                         Console.WriteLine("El enemigo se ha curado por: " + curacionEnemigo);
                         //aqui incrementas la vida del enemigo
                     }
@@ -128,8 +175,12 @@ namespace Batalla_POO
                     {
                         Console.WriteLine("El enemigo no pudo curarse");
                     }
-                       
-                }
+            }
+
+    }
+    
+
+} 
             }while (Jugador.Vida >= 0 || Enemigo.Vida >= 0);
             }
         }
