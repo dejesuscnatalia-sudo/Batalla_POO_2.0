@@ -7,7 +7,6 @@
              int Estadisticas, O;
              O = 0;
              Personaje Jugador = new Personaje();
-             
              Jugador.Vida = 100;
              Jugador.Ataque = 5;
              Personaje Enemigo = new Game();
