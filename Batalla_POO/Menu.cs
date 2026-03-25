@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-internal class Menu
+namespace Batalla_POO
+{
+    internal class Menu
 {
     public int MakeMenu(string titulo, string[] opciones, int seleccionDefault = -1)
     {
