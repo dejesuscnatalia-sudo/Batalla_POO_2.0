@@ -13,7 +13,7 @@
              Enemigo.Vida = 100;
              Enemigo.Ataque = 5;
              do
-                 Random VariableX = new Random();
+                 
              {
                  Console.WriteLine("Inserte el nombre para su personaje");
                  Jugador.Nombre = Console.ReadLine();
