@@ -9,7 +9,7 @@ namespace Batalla_POO
         private decimal vida;
         private decimal ataque;
 
-        private string Nombre
+        public string Nombre
         {
             get { return nombre; }
             set
