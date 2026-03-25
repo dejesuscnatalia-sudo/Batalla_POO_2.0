@@ -14,5 +14,13 @@ namespace Batalla_POO
             get { return nombre; }
             set { nombre = value; }
         }
+        public decimal Vida;
+        { get { return vida; }
+         set { vida = value; }
+        }
+        public decimal Ataque
+        { get { return ataque; }
+         set { ataque = value; }
+        }
     }
 }
