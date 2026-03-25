@@ -51,7 +51,7 @@ namespace Batalla_POO
             decimal curacionJugador = cj * 0.1m; //este hay que meterlo al ciclo donde se elije la opcion de curacion 
 
 
-            switch (O)
+            switch (Estadisticas)
             {
                 case 1:
                     if (aj <= 50) 
