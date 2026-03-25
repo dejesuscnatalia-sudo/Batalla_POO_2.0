@@ -71,12 +71,12 @@ namespace Batalla_POO
 
                 enemigo.Vida -= Ataque;
 
-                Console.WriteLine(Nombre + " atacó a " + enemigo.Nombre);
-                Console.WriteLine("Daño causado: " + Ataque);
+               // Console.WriteLine(Nombre + " atacó a " + enemigo.Nombre);
+                //Console.WriteLine("Daño causado: " + Ataque);
             }
             catch (Exception error)
             {
-                Console.WriteLine("Error al atacar: " + error.Message);
+                trow new Exception ("Error al atacar: " + error.Message);
             }
         }
         public void Curar(int cantidad)
@@ -95,7 +95,7 @@ namespace Batalla_POO
                     Vida = 100;
                 }
 
-                Console.WriteLine(Nombre + " se curó " + cantidad + " puntos.");
+               // Console.WriteLine(Nombre + " se curó " + cantidad + " puntos.");
             }
             catch
             {
@@ -114,7 +114,7 @@ namespace Batalla_POO
 
                 Ataque += cantidad;
 
-                Console.WriteLine(Nombre + " aumentó su ataque en " + cantidad);
+              //  Console.WriteLine(Nombre + " aumentó su ataque en " + cantidad);
             }
             catch
             {
