@@ -1,197 +1,92 @@
-namespace Batalla_POO
+using System;
+
+namespace RPG_TEST
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            int Estadisticas;
-            Personaje Jugador = new Personaje();
-            Jugador.Vida = 100;
-            Jugador.Ataque = 5;
-            Personaje Enemigo = new Personaje();
-            Enemigo.Nombre = "CPU 1";
-            Enemigo.Vida = 100;
-            Enemigo.Ataque = 5;
-            Random AtaqueEnemigo = new Random(); //contexto: da un numero al azar
-            Random AtaqueJugador = new Random();
-            Random CuracionEnemigo = new Random();
-            Random CuracionJugador = new Random();
-            Random TurnoEnemigo = new Random ();
+            Personaje jugador = new Personaje();
+            jugador.Vida = 100;
+            jugador.Ataque = 5;
 
+            Personaje enemigo = new Personaje();
+            enemigo.Vida = 100;
+            enemigo.Ataque = 5;
 
-
-            decimal ae = AtaqueEnemigo.Next(1, 101);
-            decimal aj = AtaqueJugador.Next(1, 101);
-            decimal ce = CuracionEnemigo.Next(1, 101);
-            decimal cj = CuracionJugador.Next(1, 101);
-            int te = TurnoEnemigo.Next(1, 101);
-
-
-            decimal curacionEnemigo = ce * 0.05m; //este hay que ponerlo en un if que dependa de si el enemigo esta con poca vida
-            decimal curacionJugador = cj * 0.1m; //este hay que meterlo al ciclo donde se elije la opcion de curacion 
-            
+            // --- Nombre del jugador ---
             do
             {
-                Console.WriteLine("Inserte el nombre para su personaje");
-                Jugador.Nombre = Console.ReadLine();
-            } while (Jugador.Nombre == "");
-            Personaje Datos = new Personaje();
+                Console.WriteLine("Inserte el nombre para su personaje:");
+                try { jugador.Nombre = Console.ReadLine(); }
+                catch (Exception ex) { Console.WriteLine(ex.Message); }
+            } while (string.IsNullOrWhiteSpace(jugador.Nombre));
+
             Console.Clear();
-            Console.WriteLine("");
-        //primera acción: selección de movimiento
-           
+
+            // --- Nombre del enemigo ---
             do
             {
-                string[] Movimientos = new string[]
-                {
-                     "1-Atacar",
-                     "2-Curar",
-                };
-                Menu menu = new Menu();
-                Estadisticas = menu.MakeMenu($"{Jugador.Nombre}: Vida={Jugador.Vida} | Ataque={Jugador.Ataque}\n{Enemigo.Nombre}: Vida={Enemigo.Vida} | Ataque={Enemigo.Ataque}\nSeleccione una accion", Movimientos, 1);
-            } while (Estadisticas < 1 || Estadisticas > 2);
+                Console.WriteLine("Inserte el nombre para el enemigo:");
+                try { enemigo.Nombre = Console.ReadLine(); }
+                catch (Exception ex) { Console.WriteLine(ex.Message); }
+            } while (string.IsNullOrWhiteSpace(enemigo.Nombre));
 
+            Console.Clear();
 
+            // Una sola instancia de Random para todo Program
+            Random rng = new Random();
 
-                        do
+            // --- Bucle de combate ---
+            while (jugador.Vida > 0 && enemigo.Vida > 0)
             {
-                switch (Estadisticas)
+                // Mostrar estadísticas
+                Console.WriteLine($"\n{jugador.Nombre}: Vida={jugador.Vida} | Ataque={jugador.Ataque}");
+                Console.WriteLine($"{enemigo.Nombre}: Vida={enemigo.Vida} | Ataque={enemigo.Ataque}");
+                Console.WriteLine("----------------------------------");
+
+                // --- Turno del jugador ---
+                int opcion = 0;
+                do
+                {
+                    string[] movimientos = { "1-Atacar", "2-Curar" };
+                    Menu menu = new Menu();
+                    opcion = menu.MakeMenu("Seleccione una accion", movimientos, 1);
+                } while (opcion < 1 || opcion > 2);
+
+                switch (opcion)
                 {
                     case 1:
-                        if (aj <= 50)
-                        {
-                            if (aj <= 10)
-                            {
-                                Jugador.AtaqueFurioso(Enemigo);
-                                Console.WriteLine("Has realizado un ataque furioso, has hecho el doble de daño");
-                                //ataque furioso hace el doble de daño, si es golpe critico hace el 25% mas de daño, osea 2.25 veces el daño normal
-                            }
-                            Jugador.Atacar(Enemigo);
-                            Console.WriteLine("Tu ataque ha sido exitoso");
-                            Random incremento = new Random();
-                            decimal incrementoAtaque = incremento.Next(1, 101);
-                            decimal incrementoFinal = incrementoAtaque * 0.1m;
-                            Jugador.Ataque += incrementoFinal;
-                            Console.WriteLine("Tu ataque se ha incrementado en: " + incrementoFinal);
-                            //aqui incrementas tu ataque
-                        }
+                        string resultadoAtaque = jugador.Atacar(enemigo);
+                        Console.WriteLine(resultadoAtaque);
                         break;
 
                     case 2:
-                        if (curacionJugador > 0)
-                        {
-                            Jugador.Curar((int)curacionJugador);
-                            Console.WriteLine("Te has curado por: " + curacionJugador);
-                            //aqui incrementas tu vida
-                        }
-                        else
-                        {
-                            Console.WriteLine("No pudiste curarte");
-                        }
+                        decimal cantidadCura = rng.Next(1, 101) * 0.1m;
+                        string resultadoCura = jugador.Curar(cantidadCura);
+                        Console.WriteLine(resultadoCura);
                         break;
                 }
 
-                if (Enemigo.Vida <= 100)
-                {
-                    if (te <= 25)
-                    {
+                // Verificar fin de combate tras turno del jugador
+                if (enemigo.Vida <= 0) break;
 
-                        if (curacionEnemigo > 0)
-                        {
-                            Enemigo.Curar((int)curacionEnemigo);
-                            Console.WriteLine("El enemigo se ha curado por: " + curacionEnemigo);
-                            //aqui incrementas la vida del enemigo
-
-                        }
-                        else
-                        {
-                            Console.WriteLine("El enemigo no pudo curarse");
-                        }
-
-
-                    }
-                    else
-                    {
-                        if (ae <= 50)
-                        {
-                            if (ae <= 5)
-                            {
-
-                                Enemigo.AtaqueOscuro(Jugador);
-                                Console.WriteLine("El enemigo ha realizado un ataque oscuro, has recibido el triple del daño");
-                                //ataque oscuro del enemigo hace el triple de daño, si es golpe critico hace el 25% mas de daño, osea 3.25 veces el daño normal
-
-                            }
-                            Enemigo.Atacar(Jugador);
-                            Console.WriteLine("El ataque del enemigo ha sido exitoso");
-                            Random incremento = new Random();
-                            decimal incrementoAtaque = incremento.Next(1, 101);
-                            decimal incrementoFinal = incrementoAtaque * 0.05m;
-                            Enemigo.Ataque += incrementoFinal;
-                            Console.WriteLine("El ataque del enemigo se ha incrementado en: " + incrementoFinal);
-                            //aqui incrementas el ataque del enemigo
-
-                        }
-                        else
-                        {
-                            Console.WriteLine("El ataque del enemigo ha fallado");
-                        }
-
-                        if (Enemigo.Vida <= 50)
-                        {
-                            if (te <= 25)
-                            {
-                                if (ae <= 50)
-                                {
-                                    if (ae <= 5)
-                                    {
-
-                                        Enemigo.AtaqueOscuro(Jugador);
-                                        Console.WriteLine("El enemigo ha realizado un ataque oscuro, has recibido el triple del daño");
-                                        //ataque oscuro del enemigo hace el triple de daño, si es golpe critico hace el 25% mas de daño, osea 3.25 veces el daño normal
-
-                                    }
-                                    Enemigo.Atacar(Jugador);
-                                    Console.WriteLine("El ataque del enemigo ha sido exitoso");
-                                    Random incremento = new Random();
-                                    decimal incrementoAtaque = incremento.Next(1, 101);
-                                    decimal incrementoFinal = incrementoAtaque * 0.05m;
-                                    Enemigo.Ataque += incrementoFinal;
-                                    Console.WriteLine("El ataque del enemigo se ha incrementado en: " + incrementoFinal);
-                                    //aqui incrementas el ataque del enemigo
-
-                                }
-
-                                else
-                                {
-                                    Console.WriteLine("El ataque del enemigo ha fallado");
-                                }
-                            }
-                            else
-                            {
-                                if (curacionEnemigo > 0)
-                                {
-                                    Enemigo.Curar((int)curacionEnemigo);
-                                    Console.WriteLine("El enemigo se ha curado por: " + curacionEnemigo);
-                                    //aqui incrementas la vida del enemigo
-                                }
-                                else
-                                {
-                                    Console.WriteLine("El enemigo no pudo curarse");
-                                }
-                            }
-
-                        }
-
-
-                    }
-
-                    
-
-                    Console.ReadKey();
-                }
+                // --- Turno del enemigo ---
+                Console.WriteLine("\n-- Turno del enemigo --");
+                Console.WriteLine(enemigo.TurnoEnemigo(jugador));
             }
-            while (Jugador.Vida > 0 || Enemigo.Vida > 0);
+
+            // --- Mensaje de victoria o derrota ---
+            Console.WriteLine("\n========== FIN DEL COMBATE ==========");
+
+            if (jugador.Vida <= 0 && enemigo.Vida <= 0)
+                Console.WriteLine("¡Ambos cayeron al mismo tiempo! Empate.");
+            else if (jugador.Vida <= 0)
+                Console.WriteLine($"Derrota. {enemigo.Nombre} ganó el combate.");
+            else
+                Console.WriteLine($"¡Victoria! {jugador.Nombre} ganó el combate.");
+
+            Console.ReadKey();
         }
     }
 }
